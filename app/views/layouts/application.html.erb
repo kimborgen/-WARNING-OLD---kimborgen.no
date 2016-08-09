@@ -1,14 +1,53 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KimborgenNo</title>
+    <title>Kimborgen</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <style>
+    nav ul{
+      list-style: none;
+      margin: 0 2px;
+      padding: 0;
+      display: flex;
+      justify-content: space-around;
+    }
+    .navbar {
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#5e5e5e+34,5e5e5e+34,000000+100&0.65+0,0+100 */
+      background: -moz-linear-gradient(top, rgba(94,94,94,0.65) 0%, rgba(94,94,94,0.43) 34%, rgba(0,0,0,0) 100%); /* FF3.6-15 */
+      background: -webkit-linear-gradient(top, rgba(94,94,94,0.65) 0%,rgba(94,94,94,0.43) 34%,rgba(0,0,0,0) 100%); /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to bottom, rgba(94,94,94,0.65) 0%,rgba(94,94,94,0.43) 34%,rgba(0,0,0,0) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a65e5e5e', endColorstr='#00000000',GradientType=0 ); /* IE6-9 */
+    }
+    </style>
+
   </head>
 
   <body>
-    <%= yield %>
+
+
+    <div id="main-container" class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <% flash.each do |name, msg| -%>
+            <div class="alert alert-<%= name %> alert-dismissible fade in" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <%= msg %>
+            </div>
+          <% end -%>
+        </div>
+
+      </div>
+
+      <div class="row">
+          <%= yield %>
+      </div>
+    </div>
   </body>
 </html>
